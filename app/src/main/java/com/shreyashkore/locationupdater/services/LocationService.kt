@@ -22,16 +22,8 @@ class LocationService : Service() {
     private lateinit var locationCallback: LocationCallback
     private var currentLocation: LocationEntity? = null
 
-    private val localBinder = LocationServiceBinder()
-
-    inner class LocationServiceBinder() : Binder() {
-        fun getService(): LocationService {
-            return this@LocationService
-        }
-    }
-
     override fun onBind(intent: Intent): IBinder {
-        return localBinder
+        return Binder()
     }
 
     override fun onCreate() {

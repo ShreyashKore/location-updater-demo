@@ -24,6 +24,7 @@ import com.shreyashkore.locationupdater.ui.theme.LocationUpdaterTheme
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun MapScreen(
+    userName: String,
     startTracking: () -> Unit,
     location: LocationEntity?,
 ) {
@@ -36,7 +37,9 @@ fun MapScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Greeting(name = "Shreyash")
+        Greeting(
+            name = userName
+        )
         when (locationPermission.status) {
             PermissionStatus.Granted -> {
                 Button(onClick = startTracking) {
@@ -95,6 +98,7 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     LocationUpdaterTheme {
         MapScreen(
+            userName = "Shreyash Kore",
             startTracking = { },
             location = null
         )
